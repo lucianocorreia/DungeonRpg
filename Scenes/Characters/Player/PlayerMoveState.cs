@@ -2,16 +2,8 @@ using DungeonRpg.Scenes.Constants;
 using Godot;
 using System;
 
-public partial class PlayerMoveState : Node
+public partial class PlayerMoveState : PlayerState
 {
-    private Player characterNode;
-
-    public override void _Ready()
-    {
-        characterNode = GetOwner<Player>();
-        SetPhysicsProcess(false);
-        SetProcessInput(false);
-    }
 
     public override void _PhysicsProcess(double delta)
     {
@@ -29,28 +21,17 @@ public partial class PlayerMoveState : Node
         characterNode.Flip();
     }
 
-    public override void _Notification(int what)
-    {
-        base._Notification(what);
-
-        if (what == 5001)
-        {
-            characterNode.animationPlayerNode.Play(GameConstants.PLAYER_ANIMATION_MOVE);
-            SetPhysicsProcess(true);
-            SetProcessInput(true);
-        }
-        else if (what == 5002)
-        {
-            SetPhysicsProcess(false);
-            SetProcessInput(false);
-        }
-    }
-
     public override void _Input(InputEvent @event)
     {
         if (Input.IsActionJustPressed(GameConstants.INPUT_DASH))
         {
             characterNode.stateMachineNode.SwitchState<PlayerDashState>();
         }
+    }
+
+    protected override void EnterState()
+    {
+        base.EnterState();
+        characterNode.animationPlayerNode.Play(GameConstants.PLAYER_ANIMATION_MOVE);
     }
 }
