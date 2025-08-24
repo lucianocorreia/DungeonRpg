@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://dalfp46pvksic"]
+
+[ext_resource type="PackedScene" uid="uid://dmakt1b14c55y" path="res://Assets/Models/Dungeon/gltf/floor_tile_small.gltf.glb" id="1_fberg"]
+[ext_resource type="PackedScene" uid="uid://b3bywobehcjad" path="res://Assets/Models/Dungeon/gltf/wall_Tsplit.gltf.glb" id="1_r0ewp"]
+[ext_resource type="PackedScene" uid="uid://57v1d6kwfig5" path="res://Assets/Models/Dungeon/gltf/wall.gltf.glb" id="2_7vcr4"]
+[ext_resource type="PackedScene" uid="uid://77g8x5sao2tq" path="res://Assets/Models/Dungeon/gltf/stairs_wood_decorated.gltf.glb" id="3_oiwj1"]
+[ext_resource type="PackedScene" uid="uid://cuohmjvp7rgan" path="res://Assets/Models/Dungeon/gltf/wall_corner.gltf.glb" id="4_v5q58"]
+[ext_resource type="PackedScene" uid="uid://bxd7c61xaa2e3" path="res://Assets/Models/Dungeon/gltf/wall_open_scaffold.gltf.glb" id="6_wqhu4"]
+[ext_resource type="PackedScene" uid="uid://c61xgew7dudq8" path="res://Assets/Models/Dungeon/gltf/wall_doorway_scaffold.glb" id="7_wqhu4"]
+
+[node name="Tiles" type="Node3D"]
+
+[node name="wall_Tsplit_gltf" parent="." instance=ExtResource("1_r0ewp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.35945)
+
+[node name="floor_tile_small_gltf" parent="." instance=ExtResource("1_fberg")]
+
+[node name="wall_gltf" parent="." instance=ExtResource("2_7vcr4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.35248, 0, 0)
+
+[node name="stairs_wood_decorated_gltf" parent="." instance=ExtResource("3_oiwj1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.69582, 0, 0)
+
+[node name="wall_corner_gltf" parent="." instance=ExtResource("4_v5q58")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.58826, 4.07963)
+
+[node name="wall_open_scaffold_gltf" parent="." instance=ExtResource("6_wqhu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.87539, 0, 0)
+
+[node name="wall_doorway_scaffold2" parent="." instance=ExtResource("7_wqhu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.9935)
