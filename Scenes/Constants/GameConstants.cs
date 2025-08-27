@@ -6,6 +6,7 @@ public class GameConstants
     public const string ANIMATION_IDLE = "Idle";
     public const string ANIMATION_MOVE = "Move";
     public const string ANIMATION_DASH = "Dash";
+    public const string ANIMATION_ATTACK = "Attack";
 
     // public const float PlayerSpeed = 5.0f;
     public const string INPUT_MOVE_LEFT = "MoveLeft";
