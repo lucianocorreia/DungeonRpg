@@ -21,7 +21,7 @@ public partial class PlayerDashState : PlayerState
 
     protected override void EnterState()
     {
-        characterNode.AnimationPlayerNode.Play(GameConstants.PLAYER_ANIMATION_DASH);
+        characterNode.AnimationPlayerNode.Play(GameConstants.ANIMATION_DASH);
         characterNode.Velocity = new(
             characterNode.direction.X, 0, characterNode.direction.Y
         );

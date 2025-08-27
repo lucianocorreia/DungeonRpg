@@ -3,9 +3,9 @@ namespace DungeonRpg.Scenes.Constants;
 public class GameConstants
 {
     // Player Animation
-    public const string PLAYER_ANIMATION_IDLE = "Idle";
-    public const string PLAYER_ANIMATION_MOVE = "Move";
-    public const string PLAYER_ANIMATION_DASH = "Dash";
+    public const string ANIMATION_IDLE = "Idle";
+    public const string ANIMATION_MOVE = "Move";
+    public const string ANIMATION_DASH = "Dash";
 
     // public const float PlayerSpeed = 5.0f;
     public const string INPUT_MOVE_LEFT = "MoveLeft";

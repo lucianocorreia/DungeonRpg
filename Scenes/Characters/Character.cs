@@ -10,6 +10,12 @@ public abstract partial class Character : CharacterBody3D
     [Export]
     public StateMachine StateMachineNode { get; private set; }
 
+    [ExportGroup("AI Nodes")]
+    [Export]
+    public Path3D PathNode { get; private set; }
+    [Export]
+    public NavigationAgent3D NavigationAgentNode { get; private set; }
+
     public Vector2 direction = new();
 
     public void Flip()
