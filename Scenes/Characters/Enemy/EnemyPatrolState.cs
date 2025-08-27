@@ -20,12 +20,16 @@ public partial class EnemyPatrolState : EnemyState
 
         characterNode.NavigationAgentNode.NavigationFinished += OnNavigationFinished;
         idleTimerNode.Timeout += OnHandleIdleTimerTimeout;
+
+        characterNode.ChaseAreaNode.BodyEntered += OnChaseAreaBodyEntered;
     }
 
     protected override void ExitState()
     {
         characterNode.NavigationAgentNode.NavigationFinished -= OnNavigationFinished;
         idleTimerNode.Timeout -= OnHandleIdleTimerTimeout;
+
+        characterNode.ChaseAreaNode.BodyEntered -= OnChaseAreaBodyEntered;
     }
 
     public override void _PhysicsProcess(double delta)

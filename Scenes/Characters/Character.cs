@@ -15,16 +15,18 @@ public abstract partial class Character : CharacterBody3D
     public Path3D PathNode { get; private set; }
     [Export]
     public NavigationAgent3D NavigationAgentNode { get; private set; }
+    [Export]
+    public Area3D ChaseAreaNode { get; private set; }
 
     public Vector2 direction = new();
 
     public void Flip()
     {
-        bool isNotMovingHorizontally = direction.X == 0;
+        bool isNotMovingHorizontally = Velocity.X == 0;
 
         if (isNotMovingHorizontally) { return; }
 
-        bool isMovingLeft = direction.X < 0;
+        bool isMovingLeft = Velocity.X < 0;
         SpriteNode.FlipH = isMovingLeft;
     }
 
