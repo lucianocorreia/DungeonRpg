@@ -1,6 +1,7 @@
 using DungeonRpg.Scenes.Constants;
 using Godot;
 using System;
+using System.Linq;
 
 public partial class StateMachine : Node
 {
@@ -17,22 +18,12 @@ public partial class StateMachine : Node
 
     public void SwitchState<T>()
     {
-        Node newState = null;
-
-        foreach (Node state in states)
-        {
-            if (state is T)
-            {
-                newState = state;
-                break;
-            }
-        }
+        Node newState = states.FirstOrDefault(state => state is T);
 
         if (newState == null) { return; }
 
         currentState.Notification(GameConstants.NOTIFICATION_EXIT_STATE);
         currentState = newState;
         currentState.Notification(GameConstants.NOTIFICATION_ENTER_STATE);
-
     }
 }

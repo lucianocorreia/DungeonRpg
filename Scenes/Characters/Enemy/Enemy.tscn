@@ -1,8 +1,9 @@
-[gd_scene load_steps=117 format=3 uid="uid://c01yg6f5nsuv4"]
+[gd_scene load_steps=120 format=3 uid="uid://c01yg6f5nsuv4"]
 
 [ext_resource type="Texture2D" uid="uid://bli5hut8beyjt" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_001.png" id="1_gbiqi"]
 [ext_resource type="Script" uid="uid://r06fxvshulo" path="res://Scenes/Characters/Enemy/Enemy.cs" id="1_x7xpr"]
 [ext_resource type="Texture2D" uid="uid://cfy6mj8op3doe" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_000.png" id="2_4ycpn"]
+[ext_resource type="Script" uid="uid://dqwa02xiqtehv" path="res://Scenes/Resources/StatResource.cs" id="2_s16cm"]
 [ext_resource type="Texture2D" uid="uid://bfx0pdf1y3tw7" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_002.png" id="3_1bj47"]
 [ext_resource type="Texture2D" uid="uid://c4m3fv8ihu8kw" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_003.png" id="4_ie8nq"]
 [ext_resource type="Texture2D" uid="uid://cybhl5s8xmdov" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_004.png" id="5_ey6ef"]
@@ -107,25 +108,21 @@
 [ext_resource type="Script" uid="uid://ig2aaewb65rw" path="res://Scenes/Characters/Enemy/EnemyChaseState.cs" id="105_y6inh"]
 [ext_resource type="Script" uid="uid://f2mv830jakl2" path="res://Scenes/Characters/Enemy/EnemyAttackState.cs" id="106_2fefl"]
 
-[sub_resource type="Animation" id="Animation_gbiqi"]
-resource_name = "Idle"
-loop_mode = 1
-step = 0.0555556
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0520775, 0.11175, 0.165997, 0.221329, 0.278832, 0.331994, 0.380817, 0.444828, 0.502331, 0.556578, 0.610825, 0.666158, 0.72149, 0.775737, 0.832155, 0.889657, 0.947159),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("2_4ycpn"), ExtResource("1_gbiqi"), ExtResource("3_1bj47"), ExtResource("4_ie8nq"), ExtResource("5_ey6ef"), ExtResource("6_b3y6e"), ExtResource("7_52hhs"), ExtResource("8_qqhsi"), ExtResource("9_oowg0"), ExtResource("10_1pagc"), ExtResource("11_ires7"), ExtResource("12_h55uq"), ExtResource("13_trc2a"), ExtResource("14_g7bok"), ExtResource("15_p3tmm"), ExtResource("16_y14ls"), ExtResource("17_mxs8q"), ExtResource("18_tjtr6")]
-}
+[sub_resource type="Resource" id="Resource_avgka"]
+script = ExtResource("2_s16cm")
+StatType = 0
+StatValue = 20.0
+metadata/_custom_type_script = "uid://dqwa02xiqtehv"
 
-[sub_resource type="Animation" id="Animation_wlj7t"]
-length = 0.001
+[sub_resource type="Resource" id="Resource_yn5lv"]
+script = ExtResource("2_s16cm")
+StatType = 1
+StatValue = 4.0
+metadata/_custom_type_script = "uid://dqwa02xiqtehv"
+
+[sub_resource type="Animation" id="Animation_4ycpn"]
+resource_name = "Atack"
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -133,22 +130,10 @@ tracks/0/path = NodePath("Sprite3D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0857109, 0.170337, 0.252793, 0.335249, 0.41662, 0.504501, 0.582617, 0.667243, 0.754039, 0.83541, 0.924375),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("1_gbiqi")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite3D:pixel_size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0025]
+"values": [ExtResource("19_g7bok"), ExtResource("20_p3tmm"), ExtResource("21_y14ls"), ExtResource("22_mxs8q"), ExtResource("23_tjtr6"), ExtResource("24_wlj7t"), ExtResource("25_0eq5f"), ExtResource("26_p5gnj"), ExtResource("27_v4eey"), ExtResource("28_0nbhe"), ExtResource("29_bfp38"), ExtResource("30_k1lfi")]
 }
 
 [sub_resource type="Animation" id="Animation_g7bok"]
@@ -179,9 +164,10 @@ tracks/1/keys = {
 "values": [0.0025, 0.0025, 0.0075]
 }
 
-[sub_resource type="Animation" id="Animation_x3b5a"]
-resource_name = "TakeHit"
-step = 0.0833333
+[sub_resource type="Animation" id="Animation_gbiqi"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.0555556
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -189,10 +175,10 @@ tracks/0/path = NodePath("Sprite3D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0834569, 0.16561, 0.25, 0.340348, 0.423805, 0.50987, 0.584199, 0.672872, 0.757632, 0.831961, 0.918026),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0520775, 0.11175, 0.165997, 0.221329, 0.278832, 0.331994, 0.380817, 0.444828, 0.502331, 0.556578, 0.610825, 0.666158, 0.72149, 0.775737, 0.832155, 0.889657, 0.947159),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("64_5iew7"), ExtResource("65_54xwc"), ExtResource("66_kd5ns"), ExtResource("67_6k4fv"), ExtResource("68_ow07p"), ExtResource("69_kcfj8"), ExtResource("70_l0oel"), ExtResource("71_r2nnm"), ExtResource("72_avrsc"), ExtResource("73_r8v7b"), ExtResource("74_v31l6"), ExtResource("75_43j8h")]
+"values": [ExtResource("2_4ycpn"), ExtResource("1_gbiqi"), ExtResource("3_1bj47"), ExtResource("4_ie8nq"), ExtResource("5_ey6ef"), ExtResource("6_b3y6e"), ExtResource("7_52hhs"), ExtResource("8_qqhsi"), ExtResource("9_oowg0"), ExtResource("10_1pagc"), ExtResource("11_ires7"), ExtResource("12_h55uq"), ExtResource("13_trc2a"), ExtResource("14_g7bok"), ExtResource("15_p3tmm"), ExtResource("16_y14ls"), ExtResource("17_mxs8q"), ExtResource("18_tjtr6")]
 }
 
 [sub_resource type="Animation" id="Animation_5iew7"]
@@ -212,8 +198,35 @@ tracks/0/keys = {
 "values": [ExtResource("76_1vxjy"), ExtResource("77_gxtfx"), ExtResource("78_a6b65"), ExtResource("79_x7xpr"), ExtResource("80_72x7p"), ExtResource("81_fv33j"), ExtResource("82_y6inh"), ExtResource("83_2fefl"), ExtResource("84_s16cm"), ExtResource("85_avgka"), ExtResource("86_yn5lv"), ExtResource("87_yrix4"), ExtResource("88_521lo"), ExtResource("89_oyyml"), ExtResource("90_s27dw"), ExtResource("91_1k81f"), ExtResource("92_djg00"), ExtResource("93_b2gm5"), ExtResource("94_t5wue"), ExtResource("95_wfidr"), ExtResource("96_23765"), ExtResource("97_kmpxw"), ExtResource("98_rr1b2"), ExtResource("99_rcwk1")]
 }
 
-[sub_resource type="Animation" id="Animation_4ycpn"]
-resource_name = "Atack"
+[sub_resource type="Animation" id="Animation_wlj7t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_gbiqi")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:pixel_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0025]
+}
+
+[sub_resource type="Animation" id="Animation_x3b5a"]
+resource_name = "TakeHit"
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -222,10 +235,10 @@ tracks/0/path = NodePath("Sprite3D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0857109, 0.170337, 0.252793, 0.335249, 0.41662, 0.504501, 0.582617, 0.667243, 0.754039, 0.83541, 0.924375),
+"times": PackedFloat32Array(0, 0.0834569, 0.16561, 0.25, 0.340348, 0.423805, 0.50987, 0.584199, 0.672872, 0.757632, 0.831961, 0.918026),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("19_g7bok"), ExtResource("20_p3tmm"), ExtResource("21_y14ls"), ExtResource("22_mxs8q"), ExtResource("23_tjtr6"), ExtResource("24_wlj7t"), ExtResource("25_0eq5f"), ExtResource("26_p5gnj"), ExtResource("27_v4eey"), ExtResource("28_0nbhe"), ExtResource("29_bfp38"), ExtResource("30_k1lfi")]
+"values": [ExtResource("64_5iew7"), ExtResource("65_54xwc"), ExtResource("66_kd5ns"), ExtResource("67_6k4fv"), ExtResource("68_ow07p"), ExtResource("69_kcfj8"), ExtResource("70_l0oel"), ExtResource("71_r2nnm"), ExtResource("72_avrsc"), ExtResource("73_r8v7b"), ExtResource("74_v31l6"), ExtResource("75_43j8h")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ohplv"]
@@ -246,13 +259,15 @@ radius = 6.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_y6inh"]
 radius = 1.4
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "SpriteNode", "StateMachineNode", "NavigationAgentNode", "ChaseAreaNode", "AttackAreaNode")]
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "SpriteNode", "StateMachineNode", "HurtBoxNode", "NavigationAgentNode", "ChaseAreaNode", "AttackAreaNode")]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_x7xpr")
+stats = Array[Object]([SubResource("Resource_avgka"), SubResource("Resource_yn5lv")])
 AnimationPlayerNode = NodePath("AnimationPlayer")
 SpriteNode = NodePath("Sprite3D")
 StateMachineNode = NodePath("StateMachine")
+HurtBoxNode = NodePath("HurtBox")
 NavigationAgentNode = NodePath("NavigationAgent3D")
 ChaseAreaNode = NodePath("ChaseArea")
 AttackAreaNode = NodePath("AttackArea")
@@ -314,3 +329,11 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
 shape = SubResource("SphereShape3D_y6inh")
+
+[node name="HurtBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.261328, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+shape = SubResource("CapsuleShape3D_1vxjy")
