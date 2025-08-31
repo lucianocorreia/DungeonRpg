@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://c01yg6f5nsuv4"]
+[gd_scene load_steps=121 format=3 uid="uid://c01yg6f5nsuv4"]
 
 [ext_resource type="Texture2D" uid="uid://bli5hut8beyjt" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_001.png" id="1_gbiqi"]
 [ext_resource type="Script" uid="uid://r06fxvshulo" path="res://Scenes/Characters/Enemy/Enemy.cs" id="1_x7xpr"]
@@ -135,6 +135,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("19_g7bok"), ExtResource("20_p3tmm"), ExtResource("21_y14ls"), ExtResource("22_mxs8q"), ExtResource("23_tjtr6"), ExtResource("24_wlj7t"), ExtResource("25_0eq5f"), ExtResource("26_p5gnj"), ExtResource("27_v4eey"), ExtResource("28_0nbhe"), ExtResource("29_bfp38"), ExtResource("30_k1lfi")]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StateMachine/AttackState")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"PerformHit"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_g7bok"]
 resource_name = "Death"
@@ -257,9 +271,12 @@ _data = {
 radius = 6.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_y6inh"]
-radius = 1.4
+radius = 1.15
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "SpriteNode", "StateMachineNode", "HurtBoxNode", "NavigationAgentNode", "ChaseAreaNode", "AttackAreaNode")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_s16cm"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("AnimationPlayerNode", "SpriteNode", "StateMachineNode", "HurtBoxNode", "HitBoxNode", "HitboxShapeNode", "NavigationAgentNode", "ChaseAreaNode", "AttackAreaNode")]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_x7xpr")
@@ -268,6 +285,8 @@ AnimationPlayerNode = NodePath("AnimationPlayer")
 SpriteNode = NodePath("Sprite3D")
 StateMachineNode = NodePath("StateMachine")
 HurtBoxNode = NodePath("HurtBox")
+HitBoxNode = NodePath("Hitbox")
+HitboxShapeNode = NodePath("Hitbox/CollisionShape3D")
 NavigationAgentNode = NodePath("NavigationAgent3D")
 ChaseAreaNode = NodePath("ChaseArea")
 AttackAreaNode = NodePath("AttackArea")
@@ -337,3 +356,11 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
 shape = SubResource("CapsuleShape3D_1vxjy")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("BoxShape3D_s16cm")
+disabled = true
