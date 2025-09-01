@@ -22,6 +22,8 @@ public partial class StateMachine : Node
 
         if (newState == null) { return; }
 
+        if (currentState is T) { return; }
+
         currentState.Notification(GameConstants.NOTIFICATION_EXIT_STATE);
         currentState = newState;
         currentState.Notification(GameConstants.NOTIFICATION_ENTER_STATE);

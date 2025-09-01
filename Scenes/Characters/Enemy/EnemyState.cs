@@ -1,8 +1,16 @@
+using System;
 using Godot;
 
 public abstract partial class EnemyState : CharacterState
 {
     protected Vector3 destination;
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        characterNode.GetStatResource(Stat.Health).OnZero += OnHealthZeroHealth;
+    }
 
     protected Vector3 GetPointGlobalPosition(int index)
     {
@@ -24,5 +32,11 @@ public abstract partial class EnemyState : CharacterState
     {
         characterNode.StateMachineNode.SwitchState<EnemyChaseState>();
     }
+
+    private void OnHealthZeroHealth()
+    {
+        characterNode.StateMachineNode.SwitchState<EnemyDeathState>();
+    }
+
 
 }

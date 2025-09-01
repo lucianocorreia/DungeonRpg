@@ -63,7 +63,7 @@ public abstract partial class Character : CharacterBody3D
         GD.Print($"Health before damage: {health.StatValue}, Player Health: {player.Name}");
     }
 
-    private StatResource GetStatResource(Stat health)
+    public StatResource GetStatResource(Stat health)
     {
         return stats.FirstOrDefault(stat => stat.StatType == health);
     }
