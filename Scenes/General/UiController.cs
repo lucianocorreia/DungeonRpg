@@ -17,6 +17,23 @@ public partial class UiController : Control
 
         containers[ContainerType.Start].Visible = true;
         containers[ContainerType.Start].ButtonNode.Pressed += HandleStartButtonPressed;
+
+        GameEvents.OnGameEnd += HandleGameEnd;
+        GameEvents.OnVictory += HandleVictory;
+    }
+
+    private void HandleVictory()
+    {
+        containers[ContainerType.Stats].Visible = false;
+        containers[ContainerType.Victory].Visible = true;
+
+        GetTree().Paused = true;
+    }
+
+    private void HandleGameEnd()
+    {
+        containers[ContainerType.Stats].Visible = false;
+        containers[ContainerType.Defeat].Visible = true;
     }
 
     private void HandleStartButtonPressed()

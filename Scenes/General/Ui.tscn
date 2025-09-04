@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://wf5kghaq7ao3"]
+[gd_scene load_steps=22 format=3 uid="uid://wf5kghaq7ao3"]
 
 [ext_resource type="Script" uid="uid://dy2urbuq5k515" path="res://Scenes/General/UiContainer.cs" id="1_8h2om"]
 [ext_resource type="Script" uid="uid://duuixxip6fgkr" path="res://Scenes/General/UiController.cs" id="1_72mql"]
@@ -14,6 +14,9 @@
 [ext_resource type="Resource" uid="uid://cupw4k8jo7s1v" path="res://Resources/Player_Health_Stat.tres" id="10_17rmo"]
 [ext_resource type="Resource" uid="uid://chkdxl0d6ddbj" path="res://Resources/Player_Strength_Stat.tres" id="13_cgtk1"]
 [ext_resource type="Script" uid="uid://dtuvycc2gdoog" path="res://Scenes/General/EnemyCountLabel.cs" id="14_cgtk1"]
+[ext_resource type="Texture2D" uid="uid://bitaktpkgiqix" path="res://Assets/Sprites/UI/UI Element 3.png" id="15_80qu8"]
+[ext_resource type="Texture2D" uid="uid://cb2v27sshy32x" path="res://Assets/Sprites/UI/UI ElementUI 10.png" id="16_63i7w"]
+[ext_resource type="Texture2D" uid="uid://c761jxkvr31ur" path="res://Assets/Sprites/UI/UI ElementUI 11.png" id="17_wms3j"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8h2om"]
 texture = ExtResource("3_88bdn")
@@ -27,6 +30,9 @@ texture = ExtResource("6_e202v")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hirwx"]
 texture = ExtResource("7_5e6cq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_63i7w"]
+texture = ExtResource("15_80qu8")
 
 [node name="Ui" type="Control"]
 process_mode = 3
@@ -167,3 +173,83 @@ theme_override_fonts/font = ExtResource("2_5v82x")
 theme_override_font_sizes/font_size = 28
 text = "---"
 script = ExtResource("14_cgtk1")
+
+[node name="Defeat" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -260.0
+offset_right = 260.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_63i7w")
+script = ExtResource("1_8h2om")
+container = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Defeat"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Defeat/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="Defeat/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_5v82x")
+theme_override_font_sizes/font_size = 48
+text = "DEFEAT"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Defeat/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("16_63i7w")
+
+[node name="Victory" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -260.0
+offset_right = 260.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_63i7w")
+script = ExtResource("1_8h2om")
+container = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Victory"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Victory/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="Victory/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_5v82x")
+theme_override_font_sizes/font_size = 48
+text = "VICTORY"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Victory/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("17_wms3j")
