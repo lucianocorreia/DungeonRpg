@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://wf5kghaq7ao3"]
+[gd_scene load_steps=25 format=3 uid="uid://wf5kghaq7ao3"]
 
 [ext_resource type="Script" uid="uid://dy2urbuq5k515" path="res://Scenes/General/UiContainer.cs" id="1_8h2om"]
 [ext_resource type="Script" uid="uid://duuixxip6fgkr" path="res://Scenes/General/UiController.cs" id="1_72mql"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://bitaktpkgiqix" path="res://Assets/Sprites/UI/UI Element 3.png" id="15_80qu8"]
 [ext_resource type="Texture2D" uid="uid://cb2v27sshy32x" path="res://Assets/Sprites/UI/UI ElementUI 10.png" id="16_63i7w"]
 [ext_resource type="Texture2D" uid="uid://c761jxkvr31ur" path="res://Assets/Sprites/UI/UI ElementUI 11.png" id="17_wms3j"]
+[ext_resource type="Texture2D" uid="uid://c0x8w15tgt2p4" path="res://Assets/Sprites/UI/UI Element 5.png" id="18_3ogx6"]
+[ext_resource type="Texture2D" uid="uid://ckx35fpnqc1pf" path="res://Assets/Sprites/UI/UI Element 4.png" id="19_wfcpx"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8h2om"]
 texture = ExtResource("3_88bdn")
@@ -33,6 +35,13 @@ texture = ExtResource("7_5e6cq")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_63i7w"]
 texture = ExtResource("15_80qu8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o4rv1"]
+texture = ExtResource("19_wfcpx")
+expand_margin_left = 72.0
+expand_margin_top = 16.0
+expand_margin_right = 72.0
+expand_margin_bottom = 22.0
 
 [node name="Ui" type="Control"]
 process_mode = 3
@@ -253,3 +262,55 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("17_wms3j")
+
+[node name="Puase" type="PanelContainer" parent="." node_paths=PackedStringArray("ButtonNode")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -260.0
+offset_right = 260.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_63i7w")
+script = ExtResource("1_8h2om")
+container = 1
+ButtonNode = NodePath("MarginContainer/VBoxContainer/Button")
+
+[node name="MarginContainer" type="MarginContainer" parent="Puase"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Puase/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="Puase/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("2_5v82x")
+theme_override_font_sizes/font_size = 48
+text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Puase/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("18_3ogx6")
+
+[node name="Button" type="Button" parent="Puase/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_5v82x")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/focus = SubResource("StyleBoxTexture_o4rv1")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o4rv1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_o4rv1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_o4rv1")
+text = "CONTINUE"

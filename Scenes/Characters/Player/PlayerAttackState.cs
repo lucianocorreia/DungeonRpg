@@ -16,6 +16,18 @@ public partial class PlayerAttackState : PlayerState
         comboTimerNode.Timeout += () => comboCounter = 1;
     }
 
+    public override void _PhysicsProcess(double delta)
+    {
+        // Permite movimento durante o ataque
+        if (characterNode.direction != Vector2.Zero)
+        {
+            characterNode.Velocity = new(characterNode.direction.X, 0, characterNode.direction.Y);
+            characterNode.Velocity *= 5; // Use o mesmo valor de speed do PlayerMoveState ou exporte como variável
+            characterNode.MoveAndSlide();
+            characterNode.Flip();
+        }
+    }
+
     protected override void EnterState()
     {
         characterNode.AnimationPlayerNode.Play(
