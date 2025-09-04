@@ -5,6 +5,7 @@ using Godot;
 public partial class StatResource : Resource
 {
     public event Action OnZero;
+    public event Action OnUpdate;
 
     private float statValue;
 
@@ -17,6 +18,8 @@ public partial class StatResource : Resource
         set
         {
             statValue = Mathf.Clamp(value, 0, Mathf.Inf);
+
+            OnUpdate?.Invoke();
 
             if (statValue == 0)
             {

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StatResource" load_steps=2 format=3 uid="uid://chkdxl0d6ddbj"]
+
+[ext_resource type="Script" uid="uid://dqwa02xiqtehv" path="res://Scenes/Resources/StatResource.cs" id="1_t14bt"]
+
+[resource]
+script = ExtResource("1_t14bt")
+StatType = 1
+StatValue = 3.0
+metadata/_custom_type_script = "uid://dqwa02xiqtehv"

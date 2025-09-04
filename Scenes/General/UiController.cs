@@ -22,7 +22,10 @@ public partial class UiController : Control
     private void HandleStartButtonPressed()
     {
         GetTree().Paused = false;
+
         containers[ContainerType.Start].Visible = false;
+        containers[ContainerType.Stats].Visible = true;
+
         GameEvents.RaiseStartGame();
     }
 }

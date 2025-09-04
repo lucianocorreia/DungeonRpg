@@ -1,9 +1,10 @@
-[gd_scene load_steps=96 format=3 uid="uid://be3c7lfeusog7"]
+[gd_scene load_steps=95 format=3 uid="uid://be3c7lfeusog7"]
 
 [ext_resource type="Script" uid="uid://7wgb34fyyktr" path="res://Scenes/Characters/Player/Player.cs" id="1_3y67r"]
 [ext_resource type="Texture2D" uid="uid://b6cyhyv3xxgcr" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_000.png" id="1_no7dv"]
-[ext_resource type="Script" uid="uid://dqwa02xiqtehv" path="res://Scenes/Resources/StatResource.cs" id="2_c4bsl"]
 [ext_resource type="Texture2D" uid="uid://dkj6isux135nh" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_001.png" id="2_ro4wx"]
+[ext_resource type="Resource" uid="uid://cupw4k8jo7s1v" path="res://Resources/Player_Health_Stat.tres" id="2_xcpde"]
+[ext_resource type="Resource" uid="uid://chkdxl0d6ddbj" path="res://Resources/Player_Strength_Stat.tres" id="3_5noku"]
 [ext_resource type="Texture2D" uid="uid://biaqtploi36lh" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_002.png" id="3_uj536"]
 [ext_resource type="Texture2D" uid="uid://cp8p6h25rmgnf" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_003.png" id="4_irnxo"]
 [ext_resource type="Texture2D" uid="uid://bne4eig8y1l6r" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_004.png" id="5_lv0ch"]
@@ -83,18 +84,6 @@
 [ext_resource type="Texture2D" uid="uid://cuwm5j8v25nyh" path="res://Assets/Sprites/Characters/Player/Dying/Dying_013.png" id="76_8e2nv"]
 [ext_resource type="Texture2D" uid="uid://d33amap0nxdso" path="res://Assets/Sprites/Characters/Player/Dying/Dying_014.png" id="77_vwkj1"]
 [ext_resource type="Script" uid="uid://qi3mcgbh4idt" path="res://Scenes/Characters/Player/PlayerDeathState.cs" id="83_jq86b"]
-
-[sub_resource type="Resource" id="Resource_n10vd"]
-script = ExtResource("2_c4bsl")
-StatType = 0
-StatValue = 100.0
-metadata/_custom_type_script = "uid://dqwa02xiqtehv"
-
-[sub_resource type="Resource" id="Resource_ajjrt"]
-script = ExtResource("2_c4bsl")
-StatType = 1
-StatValue = 3.0
-metadata/_custom_type_script = "uid://dqwa02xiqtehv"
 
 [sub_resource type="Animation" id="Animation_gvb3o"]
 resource_name = "Attack1"
@@ -259,7 +248,7 @@ collision_mask = 5
 floor_max_angle = 1.55334
 floor_snap_length = 0.2
 script = ExtResource("1_3y67r")
-stats = Array[Object]([SubResource("Resource_n10vd"), SubResource("Resource_ajjrt")])
+stats = Array[Object]([ExtResource("2_xcpde"), ExtResource("3_5noku")])
 AnimationPlayerNode = NodePath("AnimationPlayer")
 SpriteNode = NodePath("Sprite3D")
 StateMachineNode = NodePath("StateMachine")
