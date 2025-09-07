@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://be3c7lfeusog7"]
+[gd_scene load_steps=98 format=3 uid="uid://be3c7lfeusog7"]
 
 [ext_resource type="Script" uid="uid://7wgb34fyyktr" path="res://Scenes/Characters/Player/Player.cs" id="1_3y67r"]
 [ext_resource type="Texture2D" uid="uid://b6cyhyv3xxgcr" path="res://Assets/Sprites/Characters/Player/Idle Blinking/Idle Blinking_000.png" id="1_no7dv"]
@@ -83,7 +83,10 @@
 [ext_resource type="Texture2D" uid="uid://cx0kxqscyqs2r" path="res://Assets/Sprites/Characters/Player/Dying/Dying_012.png" id="75_ahul2"]
 [ext_resource type="Texture2D" uid="uid://cuwm5j8v25nyh" path="res://Assets/Sprites/Characters/Player/Dying/Dying_013.png" id="76_8e2nv"]
 [ext_resource type="Texture2D" uid="uid://d33amap0nxdso" path="res://Assets/Sprites/Characters/Player/Dying/Dying_014.png" id="77_vwkj1"]
+[ext_resource type="PackedScene" uid="uid://d2ol5ny3jneg4" path="res://Scenes/Abilities/Bomb.tscn" id="83_5noku"]
 [ext_resource type="Script" uid="uid://qi3mcgbh4idt" path="res://Scenes/Characters/Player/PlayerDeathState.cs" id="83_jq86b"]
+[ext_resource type="PackedScene" uid="uid://b6q2umccmr083" path="res://Scenes/Abilities/Lightning.tscn" id="85_hfku7"]
+[ext_resource type="Script" uid="uid://80sru37hmch1" path="res://Scenes/Characters/Player/HitBox.cs" id="86_5otg4"]
 
 [sub_resource type="Animation" id="Animation_gvb3o"]
 resource_name = "Attack1"
@@ -279,6 +282,7 @@ script = ExtResource("33_vfy1y")
 [node name="DashState" type="Node" parent="StateMachine" node_paths=PackedStringArray("dashTimerNode")]
 script = ExtResource("41_spf28")
 dashTimerNode = NodePath("Timer")
+bombScene = ExtResource("83_5noku")
 
 [node name="Timer" type="Timer" parent="StateMachine/DashState"]
 wait_time = 0.4
@@ -287,6 +291,7 @@ one_shot = true
 [node name="AttackState" type="Node" parent="StateMachine" node_paths=PackedStringArray("comboTimerNode")]
 script = ExtResource("66_yy16m")
 comboTimerNode = NodePath("Timer")
+lightningScene = ExtResource("85_hfku7")
 
 [node name="Timer" type="Timer" parent="StateMachine/AttackState"]
 wait_time = 2.0
@@ -301,7 +306,8 @@ shape = SubResource("CapsuleShape3D_spf28")
 
 [node name="HitBox" type="Area3D" parent="."]
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
+script = ExtResource("86_5otg4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
 shape = SubResource("BoxShape3D_yy16m")
