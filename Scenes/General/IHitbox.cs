@@ -1,4 +1,5 @@
 public interface IHitbox
 {
-    float GetDamage();
+    public float GetDamage();
+    public bool CanStun();
 }

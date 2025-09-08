@@ -11,6 +11,7 @@ public class GameConstants
     public const string ANIMATION_EXPAND = "Expand";
     public const string ANIMATION_EXPLOSION = "Explosion";
     public const string ANIMATION_LIGHTNING = "Lightning";
+    public const string ANIMATION_STUN = "Stun";
 
     // public const float PlayerSpeed = 5.0f;
     public const string INPUT_MOVE_LEFT = "MoveLeft";

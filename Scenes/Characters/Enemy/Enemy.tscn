@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://c01yg6f5nsuv4"]
+[gd_scene load_steps=126 format=3 uid="uid://c01yg6f5nsuv4"]
 
 [ext_resource type="Texture2D" uid="uid://bli5hut8beyjt" path="res://Assets/Sprites/Characters/Enemy Knight/Idle/0_Demons_of_Darkness_Idle_001.png" id="1_gbiqi"]
 [ext_resource type="Script" uid="uid://r06fxvshulo" path="res://Scenes/Characters/Enemy/Enemy.cs" id="1_x7xpr"]
@@ -110,6 +110,7 @@
 [ext_resource type="Script" uid="uid://f2mv830jakl2" path="res://Scenes/Characters/Enemy/EnemyAttackState.cs" id="106_2fefl"]
 [ext_resource type="Script" uid="uid://b37sd2nu15lx7" path="res://Scenes/Characters/Enemy/EnemyDeathState.cs" id="108_avgka"]
 [ext_resource type="Script" uid="uid://80sru37hmch1" path="res://Scenes/Characters/Player/HitBox.cs" id="109_yn5lv"]
+[ext_resource type="Script" uid="uid://c8cb48hafvwsh" path="res://Scenes/Characters/Enemy/StunState.cs" id="110_521lo"]
 
 [sub_resource type="Resource" id="Resource_avgka"]
 script = ExtResource("2_s16cm")
@@ -251,7 +252,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_x3b5a"]
-resource_name = "TakeHit"
+resource_name = "Stun"
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -273,7 +274,7 @@ _data = {
 &"Idle": SubResource("Animation_gbiqi"),
 &"Move": SubResource("Animation_5iew7"),
 &"RESET": SubResource("Animation_wlj7t"),
-&"TakeHit": SubResource("Animation_x3b5a")
+&"Stun": SubResource("Animation_x3b5a")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1vxjy"]
@@ -319,7 +320,7 @@ shape = SubResource("CapsuleShape3D_1vxjy")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("100_gxtfx")]
 currentState = NodePath("IdleState")
-states = [NodePath("IdleState"), NodePath("ReturnState"), NodePath("PatrolState"), NodePath("ChaseState"), NodePath("AttackState"), NodePath("DeathState")]
+states = [NodePath("IdleState"), NodePath("ReturnState"), NodePath("PatrolState"), NodePath("ChaseState"), NodePath("AttackState"), NodePath("DeathState"), NodePath("StunState")]
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("101_a6b65")
@@ -347,6 +348,9 @@ script = ExtResource("106_2fefl")
 
 [node name="DeathState" type="Node" parent="StateMachine"]
 script = ExtResource("108_avgka")
+
+[node name="StunState" type="Node" parent="StateMachine"]
+script = ExtResource("110_521lo")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 debug_enabled = true
