@@ -1,9 +1,12 @@
+using System;
+using System.Reflection.Metadata.Ecma335;
 using DungeonRpg.Scenes.Constants;
 using Godot;
 
 public abstract partial class CharacterState : Node
 {
     protected Character characterNode;
+    public Func<bool> CanTransition = () => true;
 
     public override void _Ready()
     {

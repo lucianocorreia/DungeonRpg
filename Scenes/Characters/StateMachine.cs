@@ -9,7 +9,7 @@ public partial class StateMachine : Node
     private Node currentState;
 
     [Export]
-    private Node[] states;
+    private CharacterState[] states;
 
     public override void _Ready()
     {
@@ -18,11 +18,13 @@ public partial class StateMachine : Node
 
     public void SwitchState<T>()
     {
-        Node newState = states.FirstOrDefault(state => state is T);
+        CharacterState newState = states.FirstOrDefault(state => state is T);
 
         if (newState == null) { return; }
 
         if (currentState is T) { return; }
+
+        if (!newState.CanTransition()) { return; }
 
         currentState.Notification(GameConstants.NOTIFICATION_EXIT_STATE);
         currentState = newState;
